@@ -35,6 +35,7 @@ dependencies:
   native_ios_dialog:
   sqflite: ^2.0.2
   path_provider: ^2.0.9
+  shared_preferences: ^2.0.13
 
 
 

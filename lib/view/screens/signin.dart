@@ -111,6 +111,7 @@ class Signing extends StatelessWidget {
                     } else {
                       user = data[0];
                       userController.setUser(user);
+                      userController.setSharedValue(true);
                       // 'go to dashboard' and pass userId as an argument
                       Constant.showSnackBar('Welcome back !',context);
                       Get.off(

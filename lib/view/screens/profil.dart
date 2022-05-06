@@ -5,6 +5,7 @@ import 'package:task_manager/model/user_model.dart';
 import '../../controller/util_controller.dart';
 import 'package:get/get.dart';
 
+import '../../home.dart';
 import '../widgets/custom_dialogh.dart';
 import '../widgets/custom_item.dart';
 import 'package:get/get.dart';
@@ -133,7 +134,7 @@ class Profil extends StatelessWidget {
           CustomItem(
             item: 'Deconnexion',
             onTap: () {
-              print(' go to deconnexion ');
+            _userController.logOut();
             },
           ),
           // specie case need changement  into database
@@ -143,6 +144,7 @@ class Profil extends StatelessWidget {
               UserModel user = ISnullOrNot();
            int accountDeleted =   await _userController.deleteAccount(user: user);
            print(accountDeleted);
+              Get.offAll(()=>const Home());
             },
           ),
         ],

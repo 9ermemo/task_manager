@@ -3,13 +3,26 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:task_manager/model/user_model.dart';
 import 'package:task_manager/services/user_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../home.dart';
 class UserController extends GetxController{
 
   bool isLoading=true;
   File ? image;
   UserController({this.user});
   UserModel? user;
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  setSharedValue(bool  value)async{
+    final SharedPreferences prefs = await _prefs;
+    prefs.setBool('wasIn', value);
+  }
+  Future<bool?> getSharedValue() async{
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getBool('wasIn');
+  }
 
   UserModel? get users => user ;
   setUser(UserModel? user){
@@ -82,9 +95,12 @@ class UserController extends GetxController{
   }
 
 // logOut
-  logOut({ UserModel? user})  {
+  logOut() async {
     // build a 'sharedPreferences' here
+    final SharedPreferences prefs = await _prefs;
+    prefs.remove('wasIn');
     // back to onBoarding
+    Get.offAll(()=>const Home());
   }
 
 
