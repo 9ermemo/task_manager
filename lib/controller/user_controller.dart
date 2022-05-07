@@ -99,8 +99,6 @@ class UserController extends GetxController{
     // build a 'sharedPreferences' here
     final SharedPreferences prefs = await _prefs;
     prefs.remove('wasIn');
-    // back to onBoarding
-    Get.offAll(()=>const Home());
   }
 
 

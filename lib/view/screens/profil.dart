@@ -135,6 +135,7 @@ class Profil extends StatelessWidget {
             item: 'Deconnexion',
             onTap: () {
             _userController.logOut();
+            Get.offAll(()=>const Home());
             },
           ),
           // specie case need changement  into database

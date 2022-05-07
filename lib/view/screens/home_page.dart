@@ -48,9 +48,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          CircleAvatar(
-              foregroundImage:
-                  ExactAssetImage('images/assets/add_picture.png')),
+
         ],
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -87,11 +85,11 @@ class HomePage extends StatelessWidget {
                         await userController.updateImage(user: user);
                       },
                       // picture
-                      child: userController.isLoading
-                          ? Image.asset('images/assets/PERSON.jpg')
-                          : Container(
-                              child: Image.network(
-                                  '${userController.user?.image}'))),
+                      child:  utilController.image == null
+                          ? Image.asset('images/assets/add_picture.png')
+                          : Image.file(utilController.image!,
+                          height: 150, fit: BoxFit.cover)
+                  ),
                 );
               },
             ),
